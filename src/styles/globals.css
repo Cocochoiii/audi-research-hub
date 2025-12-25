@@ -1,0 +1,357 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --audi-black: #000000;
+  --audi-gray-900: #0D0D0D;
+  --audi-gray-800: #1A1A1A;
+  --audi-gray-700: #2A2A2A;
+  --audi-gray-600: #3D3D3D;
+  --audi-gray-500: #5C5C5C;
+  --audi-gray-400: #8C8C8C;
+  --audi-gray-300: #B3B3B3;
+  --audi-gray-200: #D4D4D4;
+  --audi-gray-100: #E8E8E8;
+  --audi-white: #FFFFFF;
+  --audi-red: #BB0A30;
+  --audi-red-dark: #8A0825;
+  --audi-red-light: #E01E41;
+  --audi-accent: #FF3341;
+  
+  --gradient-dark: linear-gradient(135deg, #1A1A1A 0%, #0D0D0D 50%, #000000 100%);
+  --gradient-card: linear-gradient(145deg, rgba(42,42,42,0.8) 0%, rgba(26,26,26,0.9) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+  
+  --shadow-soft: 0 4px 30px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px rgba(187, 10, 48, 0.15);
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--audi-black);
+  color: var(--audi-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--audi-gray-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--audi-gray-600);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--audi-gray-500);
+}
+
+/* Selection */
+::selection {
+  background: var(--audi-red);
+  color: var(--audi-white);
+}
+
+/* Focus Styles */
+:focus-visible {
+  outline: 2px solid var(--audi-red);
+  outline-offset: 2px;
+}
+
+/* Custom Component Styles */
+@layer components {
+  /* Glass Card */
+  .glass-card {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Audi Button */
+  .btn-audi {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium tracking-wide;
+    @apply transition-all duration-300 ease-out;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-audi-red focus-visible:ring-offset-2 focus-visible:ring-offset-black;
+  }
+
+  .btn-audi-primary {
+    @apply btn-audi bg-audi-red text-white;
+    @apply hover:bg-audi-red-light hover:shadow-glow;
+    @apply active:bg-audi-red-dark;
+  }
+
+  .btn-audi-secondary {
+    @apply btn-audi bg-transparent text-white border border-audi-gray-500;
+    @apply hover:border-audi-gray-300 hover:bg-audi-gray-800;
+    @apply active:bg-audi-gray-700;
+  }
+
+  .btn-audi-ghost {
+    @apply btn-audi bg-transparent text-audi-gray-300;
+    @apply hover:text-white hover:bg-audi-gray-800;
+  }
+
+  /* Input Styles */
+  .input-audi {
+    @apply w-full px-4 py-3 bg-audi-gray-800 border border-audi-gray-600 rounded-lg;
+    @apply text-white placeholder-audi-gray-400;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus:border-audi-red focus:ring-1 focus:ring-audi-red;
+  }
+
+  /* Card Styles */
+  .card-audi {
+    @apply relative overflow-hidden rounded-xl;
+    @apply bg-gradient-to-br from-audi-gray-800/80 to-audi-gray-900/90;
+    @apply border border-audi-gray-700/50;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:border-audi-gray-600 hover:shadow-card;
+  }
+
+  .card-audi-interactive {
+    @apply card-audi cursor-pointer;
+    @apply hover:transform hover:-translate-y-1;
+    @apply hover:shadow-audi-hover;
+  }
+
+  /* Badge Styles */
+  .badge-audi {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply badge-audi bg-emerald-500/20 text-emerald-400 border border-emerald-500/30;
+  }
+
+  .badge-warning {
+    @apply badge-audi bg-amber-500/20 text-amber-400 border border-amber-500/30;
+  }
+
+  .badge-info {
+    @apply badge-audi bg-blue-500/20 text-blue-400 border border-blue-500/30;
+  }
+
+  .badge-danger {
+    @apply badge-audi bg-audi-red/20 text-audi-red-light border border-audi-red/30;
+  }
+
+  /* Navigation Link */
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg text-audi-gray-300;
+    @apply transition-all duration-200;
+    @apply hover:bg-audi-gray-800 hover:text-white;
+  }
+
+  .nav-link-active {
+    @apply nav-link bg-audi-gray-800 text-white border-l-2 border-audi-red;
+  }
+
+  /* Stat Card */
+  .stat-card {
+    @apply relative p-6 rounded-xl overflow-hidden;
+    @apply bg-gradient-to-br from-audi-gray-800 to-audi-gray-900;
+    @apply border border-audi-gray-700/50;
+  }
+
+  .stat-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: radial-gradient(circle at top right, rgba(187, 10, 48, 0.15), transparent 70%);
+  }
+
+  .stat-card:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Table Styles */
+  .table-audi {
+    @apply w-full text-left;
+  }
+
+  .table-audi th {
+    @apply px-4 py-3 text-xs font-medium uppercase tracking-wider text-audi-gray-400;
+    @apply bg-audi-gray-900 border-b border-audi-gray-700;
+  }
+
+  .table-audi td {
+    @apply px-4 py-4 text-sm text-audi-gray-200;
+    @apply border-b border-audi-gray-800;
+  }
+
+  .table-audi tbody tr {
+    @apply transition-colors duration-150;
+    @apply hover:bg-audi-gray-800/50;
+  }
+
+  /* Tag Styles */
+  .tag {
+    @apply inline-flex items-center px-2 py-1 rounded text-xs;
+    @apply bg-audi-gray-700 text-audi-gray-300;
+    @apply transition-colors duration-150;
+    @apply hover:bg-audi-gray-600;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    @apply absolute z-50 px-3 py-2 text-sm text-white rounded-lg;
+    @apply bg-audi-gray-800 border border-audi-gray-700;
+    @apply shadow-lg opacity-0 invisible transition-all duration-200;
+  }
+
+  .tooltip-trigger:hover .tooltip {
+    @apply opacity-100 visible;
+  }
+}
+
+/* Animations */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-white via-audi-gray-200 to-audi-gray-400;
+    @apply bg-clip-text text-transparent;
+  }
+
+  .text-gradient-red {
+    @apply bg-gradient-to-r from-audi-red-light to-audi-red;
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* Border gradient */
+  .border-gradient {
+    border: 1px solid;
+    border-image: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)) 1;
+  }
+
+  /* Glow effect */
+  .glow-red {
+    box-shadow: 0 0 30px rgba(187, 10, 48, 0.3);
+  }
+
+  /* Line clamp */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(187, 10, 48, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(187, 10, 48, 0.4);
+  }
+}
+
+/* Ring loader animation */
+@keyframes ring-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ring-loader {
+  animation: ring-spin 1.5s linear infinite;
+}
