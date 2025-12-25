@@ -6,7 +6,6 @@ import {
   TrendingDown,
   Minus,
   Info,
-  ChevronRight,
   Filter,
   Zap,
   Target,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, Users, FileText, ArrowRight, Star, Tag } from 'lucide-react';
+import { Calendar, Users, FileText, ArrowRight, Star } from 'lucide-react';
 import { ResearchStudy } from '../types';
 import { cn, formatDate, getStatusColor } from '../utils';
 import { categoryLabels, statusLabels } from '../data/mockData';
@@ -173,7 +173,7 @@ export const StudyCard: React.FC<StudyCardProps> = ({ study, variant = 'default'
           <div className="flex items-center justify-between pt-4 border-t border-audi-gray-700/30">
             <div className="flex items-center gap-2">
               <div className="flex -space-x-2">
-                {study.authors.slice(0, 2).map((author, i) => (
+                {study.authors.slice(0, 2).map((author) => (
                   <div
                     key={author.id}
                     className="w-6 h-6 rounded-full bg-audi-gray-600 border-2 border-audi-gray-800 flex items-center justify-center text-[10px] font-medium"

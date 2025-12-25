@@ -3,12 +3,9 @@ import { motion } from 'framer-motion';
 import {
   BarChart3,
   TrendingUp,
-  PieChart as PieChartIcon,
-  Calendar,
   Users,
   FileText,
   Download,
-  Filter,
   ArrowUpRight,
   ArrowDownRight,
 } from 'lucide-react';
@@ -25,9 +22,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend,
-  LineChart,
-  Line,
 } from 'recharts';
 import { useStudies } from '../hooks';
 import { cn } from '../utils';
@@ -403,7 +397,7 @@ export const Analytics: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {authorStats.map((author, index) => (
+              {authorStats.map((author) => (
                 <tr key={author.name} className="border-b border-audi-gray-800 hover:bg-audi-gray-800/30 transition-colors">
                   <td className="py-4 px-4">
                     <div className="flex items-center gap-3">

@@ -5,7 +5,6 @@ import {
   TrendingUp,
   FolderOpen,
   FileText,
-  Users,
   ArrowRight,
   ArrowUpRight,
   ArrowDownRight,

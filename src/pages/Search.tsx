@@ -1,13 +1,11 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import {
   Search as SearchIcon,
   Filter,
   X,
   Clock,
   TrendingUp,
-  ChevronDown,
   LayoutGrid,
   List,
   Sparkles,
@@ -15,7 +13,7 @@ import {
 } from 'lucide-react';
 import { useStudies, useDebounce } from '../hooks';
 import { StudyCard } from '../components/StudyCard';
-import { ResearchStudy, StudyCategory, StudyStatus } from '../types';
+import { StudyCategory, StudyStatus } from '../types';
 import { cn, getCategoryColor } from '../utils';
 
 const recentSearches = [
@@ -120,7 +118,7 @@ export const Search: React.FC = () => {
     // Sorting
     switch (sortBy) {
       case 'date':
-        results.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+        results.sort((a, b) => new Date(b.dateModified).getTime() - new Date(a.dateModified).getTime());
         break;
       case 'title':
         results.sort((a, b) => a.title.localeCompare(b.title));

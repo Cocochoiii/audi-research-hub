@@ -5,8 +5,6 @@ import {
   LayoutDashboard,
   Search,
   FolderOpen,
-  TrendingUp,
-  Users,
   Settings,
   ChevronLeft,
   ChevronRight,

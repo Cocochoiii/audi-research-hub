@@ -5,7 +5,6 @@ import {
   Filter,
   Grid,
   List,
-  ChevronDown,
   X,
   SlidersHorizontal,
   Calendar,
@@ -13,7 +12,6 @@ import {
 } from 'lucide-react';
 import { useSearch, useStudies } from '../hooks';
 import { StudyCard } from '../components/StudyCard';
-import { categoryLabels, statusLabels } from '../data/mockData';
 import { cn } from '../utils';
 import { StudyCategory, StudyStatus } from '../types';
 
@@ -38,7 +36,7 @@ const statuses: { id: StudyStatus; label: string }[] = [
 
 export const Library: React.FC = () => {
   const { studies } = useStudies();
-  const { filters, setQuery, setCategories, setYears, resetFilters, performSearch, results, totalResults } = useSearch();
+  const { filters, setQuery, setCategories, setYears, resetFilters, performSearch, results } = useSearch();
   
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [showFilters, setShowFilters] = useState(true);

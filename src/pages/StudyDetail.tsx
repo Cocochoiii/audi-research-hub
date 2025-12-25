@@ -26,7 +26,7 @@ import {
 import { useStudies } from '../hooks';
 import { StudyCard } from '../components/StudyCard';
 import { DocumentIcon } from '../components/Icons';
-import { cn, formatDate, formatRelativeDate, getStatusColor, getCategoryColor } from '../utils';
+import { cn, formatDate, formatRelativeDate, formatFileSize, getStatusColor, getCategoryColor } from '../utils';
 
 const tabs = [
   { id: 'overview', label: 'Overview', icon: Eye },
@@ -340,7 +340,7 @@ export const StudyDetail: React.FC = () => {
                             {doc.name}
                           </p>
                           <p className="text-xs text-audi-gray-500">
-                            {doc.type.toUpperCase()} • {doc.size} • Updated {formatRelativeDate(doc.updatedAt)}
+                            {doc.type.toUpperCase()} • {formatFileSize(doc.size)} • Updated {formatRelativeDate(doc.dateUploaded)}
                           </p>
                         </div>
                         <button className="p-2 text-audi-gray-400 hover:text-white hover:bg-audi-gray-700 rounded-lg transition-all opacity-0 group-hover:opacity-100">
