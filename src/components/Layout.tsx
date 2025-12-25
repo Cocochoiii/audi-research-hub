@@ -16,6 +16,7 @@ import {
   FileText,
   Bookmark,
   HelpCircle,
+  Users,
 } from 'lucide-react';
 import { cn } from '../utils';
 import { AudiRings } from './Icons';

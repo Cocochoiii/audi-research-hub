@@ -77,7 +77,7 @@ const TrendRadarViz: React.FC<{
 
   // Calculate positions for items
   const positionedItems = useMemo(() => {
-    return filteredItems.map((item, index) => {
+    return filteredItems.map((item) => {
       const ringRadius = ringConfig[item.ring].radius * (size / 200);
       const quadrant = quadrantConfig[item.quadrant];
       

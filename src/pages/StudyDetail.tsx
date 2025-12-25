@@ -12,7 +12,6 @@ import {
   Share2,
   Bookmark,
   BookmarkCheck,
-  ExternalLink,
   ChevronRight,
   BarChart3,
   Lightbulb,
@@ -24,9 +23,8 @@ import {
   ThumbsUp,
 } from 'lucide-react';
 import { useStudies } from '../hooks';
-import { StudyCard } from '../components/StudyCard';
 import { DocumentIcon } from '../components/Icons';
-import { cn, formatDate, formatRelativeDate, formatFileSize, getStatusColor, getCategoryColor } from '../utils';
+import { cn, formatRelativeDate, formatFileSize, getStatusColor, getCategoryColor } from '../utils';
 
 const tabs = [
   { id: 'overview', label: 'Overview', icon: Eye },
@@ -382,10 +380,10 @@ export const StudyDetail: React.FC = () => {
                           {metric.trend && (
                             <div className={cn(
                               'flex items-center gap-1 px-2 py-1 rounded text-xs font-medium',
-                              metric.trend > 0 ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'
+                              metric.trend === 'up' ? 'bg-emerald-500/20 text-emerald-400' : metric.trend === 'down' ? 'bg-rose-500/20 text-rose-400' : 'bg-audi-gray-700 text-audi-gray-400'
                             )}>
-                              <TrendingUp size={12} className={metric.trend < 0 ? 'rotate-180' : ''} />
-                              {Math.abs(metric.trend)}%
+                              <TrendingUp size={12} className={metric.trend === 'down' ? 'rotate-180' : ''} />
+                              {metric.change !== undefined ? `${Math.abs(metric.change)}%` : metric.trend}
                             </div>
                           )}
                         </div>
@@ -467,7 +465,7 @@ export const StudyDetail: React.FC = () => {
                 </Link>
               </div>
               <div className="space-y-3">
-                {relatedStudies.map((related, index) => (
+                {relatedStudies.map((related) => (
                   <Link
                     key={related.id}
                     to={`/study/${related.id}`}
